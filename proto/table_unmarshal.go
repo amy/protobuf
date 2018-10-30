@@ -331,6 +331,9 @@ func (u *unmarshalInfo) computeUnmarshalInfo() {
 		if len(tagArray) < 2 {
 			panic("protobuf tag not enough fields in " + t.Name() + "." + f.Name + ": " + tags)
 		}
+		if tagArray[0] == "-" {
+			continue
+		}
 		tag, err := strconv.Atoi(tagArray[1])
 		if err != nil {
 			panic("protobuf tag field not an integer: " + tagArray[1])
